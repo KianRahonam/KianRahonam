@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <head>Login</head>
 <body>
+    <h1>{{ message }}</h1>
     <fieldset>
         <legend> Login Here</legend>
-        <form method="post" action="/login">
+        <form method="post" action="/loginUser">
             {% csrf_token %}
         <input name="username" placeholder="Username">
         <input name="password" placeholder="Password">
-    </form>
         <button type="submit">Login</button> <button type="reset">Clear</button>
+    </form>
+        
     </fieldset>
 </body>
 

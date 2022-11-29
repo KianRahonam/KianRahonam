@@ -24,6 +24,7 @@ urlpatterns = [
     path('signupPage', login.signupPage, name="signupPage"),
     path('createUser',login.createUser, name='createUser'),
     path('loginPage', login.loginPage, name="loginPage"),
-    path('login', login.login, name="login")
+    path('loginUser', login.loginUser, name="loginUser"),
+    path('studentdata',login.studentData, name="studentsdata")
 
 ]

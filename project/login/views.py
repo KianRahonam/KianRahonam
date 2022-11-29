@@ -8,26 +8,40 @@ def index(request):
 def signupPage(request):
     return render(request,'signup.html')
 
-def loginPage(request):
-    return render(request,'login.html')
-
 def createUser(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user =User(username=username,password=password)
-        user.save()
-        return render(request,'login.html',{'message':'{} User Created'.format(username)})
+        re_password = request.POST.get('repassword')
+      
+        if re_password == password:
+            user =User(username=username,password=password)
+            user.save()
+            return render(request,'login.html',{'message':'{} User Created'.format(username)})
+        else:
+            return render(request,'signup.html',{'message':"Password not matching"})
 
-def login(request):
+def loginPage(request):
+    return render(request,'login.html')
+
+def loginUser(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
         user = authenticate(username=username,password=password)
-        if user.is_valid():
+        if user is not None:
             return render(request,'main.html',{'message':'Welcome {}'.format(username)})
         else:
             return render(request,'login.html',{'message':'Your Not Allowed {}'.format(username)})
+
+
+from .models import studentData 
+def studentCreation(request):
+    if request.method=='POST':
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        s=studentData(firstname=firstname,lastname=lastname)
+        s.save()
+
 
 # Create your views here.

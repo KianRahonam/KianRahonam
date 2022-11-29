@@ -266,7 +266,7 @@ dict_data.items()                               # ---> Provide the list of items
 dict_data.keys()	                            # ---> provide the keys of dictionery
 dict_data.pop()                                 # ---> Eliminate the item of perticuler Key
 dict_data.popitem()                             # ---> Removes the last inserted key-value pair
-dict_data.update()	                            # ---> Updates the dictionary with the specified key-value pairs
+dict_data.update({dict})	                    # ---> Updates the dictionary with the specified key-value pairs
 dict_data.values()	                            # ---> Returns a list of all the values in the dictionary
 
 "====================================================================================================="

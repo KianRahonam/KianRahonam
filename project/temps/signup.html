@@ -9,13 +9,14 @@
     <script src='main.js'></script>
 </head>
 <body>
+    <h1>{{ message }}</h1>
     <fieldset>
         <legend>Register Here</legend>
         <form method="post" action="/createUser">
             {% csrf_token %}
-            <input type="text" name="username" placeholder="username">
+            <input type="text" name="username" placeholder="Username">
             <input type="text" name="password" placeholder="Password">
-            <input type="text" name="password" placeholder="Confirm Password">
+            <input type="text" name="repassword" placeholder="Confirm Password">
             <button>Register</button> <button>Reset</button>
         </form>
     </fieldset>
