@@ -15,16 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from login import views as app
 
-from login import views as login
+
 
 urlpatterns = [
-    path('',login.index, name='index'),
+    path('index',app.index, name='index'),
     path('admin/', admin.site.urls),
-    path('signupPage', login.signupPage, name="signupPage"),
-    path('createUser',login.createUser, name='createUser'),
-    path('loginPage', login.loginPage, name="loginPage"),
-    path('loginUser', login.loginUser, name="loginUser"),
-    path('studentdata',login.studentData, name="studentsdata")
+    path('signupPage', app.signupPage, name="signupPage"),
+    path('createUser',app.createUser, name='createUser'),
+    path('loginPage', app.loginPage, name="loginPage"),
+    path('loginUser', app.loginUser, name="loginUser"),
+    path('studentdata',app.studentData, name="studentsdata"),
+    path('',app.basePage,name='bview')
 
 ]

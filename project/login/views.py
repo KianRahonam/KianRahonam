@@ -43,5 +43,5 @@ def studentCreation(request):
         s=studentData(firstname=firstname,lastname=lastname)
         s.save()
 
-
-# Create your views here.
+def basePage(request):
+    return render(request,'base.html')
