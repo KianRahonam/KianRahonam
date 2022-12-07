@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    Add User to Database
+</head>
+<body>
+    {{ message }}
+    <form method="post" action="/createUser">
+        {% csrf_token %}
+    <input name="firstname" type="text" placeholder="First Name :">
+    <input type="text" name="lastname" required placeholder="Last Name"> 
+    <input name="emailId" type="text" required placeholder="Email id">
+    <input name="phoneNumber" type="text" required placeholder="Phone Number">
+    <input name="status" required placeholder="Status">
+    <button>Submit</button>
+    </form>
+</body>
+</html>
