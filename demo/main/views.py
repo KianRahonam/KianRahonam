@@ -28,3 +28,18 @@ def adduser(request):
 def FatchDate(request):
     data = Userdata.objects.all() # Fatching the data JSON format
     return render(request,"viewdata.html",{'data':data})
+
+    
+def FatchDate(request):
+    data = Userdata.objects.all() # Fatching the data JSON format
+    return render(request,"viewdata.html",{'data':data})
+
+def searchPage(request):
+    return render(request,'searchdata.html')
+
+def searchdata(request):
+    if request.method == "POST":
+        useremailid = request.POST['emailId']
+        data = Userdata.objects.filter(emailId=useremailid)
+        # d=len(data)
+        return render(request,"searchdata.html",{'keydata':data})

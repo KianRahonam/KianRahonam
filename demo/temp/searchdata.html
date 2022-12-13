@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form method="POST" action="/searchuser">
+        {% csrf_token %}
+        <input name="emailId" >
+        <button type="submit">Search</button>
+        </form>
+    
+        <table>
+          
+            <!-- {% if d %} -->
+            <tr>
+                <Th>Name</Th>
+                <Th>lastname</Th>
+                <Th>Email</Th>
+                <Th>Phone</Th>
+            </tr>
+            {% endif %}
+           
+{% for i in keydata %}
+        <tr>
+        <td>{{ i.firstname }}</td>
+        <td>{{ i.lastname }}</td>
+        <td>{{ i.emailId }}</td>
+        <td>{{ i.phoneNumber }}</td>
+        </tr>
+{% endfor %}
+   
+    </table>
+
+</body>
+</html>
