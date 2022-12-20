@@ -8,6 +8,8 @@ urlpatterns = [
     path('adduser',views.adduserPage, name="adduserPage"),
     path('createUser',views.adduser,name='createuser'),
     path('searchPage',views.searchPage, name='searchPage'),
-    path('searchuser',views.searchdata,name='searchdata')
+    path('searchuser',views.searchdata,name='searchdata'),
+    path('uploadPage',views.uploadPage,),
+    path('upload',views.image_upload_view)
             
 ]
