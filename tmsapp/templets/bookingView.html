@@ -1,0 +1,178 @@
+<!--{% load static %}-->
+{% include "base.html" %}
+</head>
+<script> </script>
+<body>
+     <h3>View Booking</h3>
+     <H3>{{ lrnumber }}</H3>
+     <form action="/viewDetials" method="POST">
+     <h5>LR Number : <input type="text" id="lrNumber" name="lrNumber" style="width:10%"><button type="submit">Search</button></h5>
+     <h1>{{ message }}</h1>
+        <form action="/viewDetials" method="POST">
+            {% csrf_token %}
+    </form>
+        {% for n in data %}
+    <br><table align="Center" style="width:100%">
+      <tr>
+        <td>Header Detials</td>
+      </tr>
+    
+    <tr>
+        <td>
+            <label>LR Number</label>
+                        <label>{{ n.lrNumber }}</label>
+        </td>
+        <td>
+            <label>LR Number</label>
+        </td>
+
+        <td>
+            <label>Booking Date</label>
+        </td>
+        <td>
+            <label>{{ n.lrDate }}</label>
+        </td>
+        <td>
+            <label>Booking Branch</label>
+        </td>
+        <td>
+            <label>{{ n.bookingBranch }}</label>
+        </td>
+        <td>
+            <label>{{ n.status }}</label>
+        </td>
+        <td>
+            <label>Delivery Branch</label>
+        </td>
+        <td>
+            <label>{{ n.deliveryBranch }}</label>
+        </td>
+        <td>
+            <label>Delivery Type</label>
+        </td>
+        <td>
+            <label>{{ n.deliveryType }}</label>
+        </td>
+    </tr>
+
+
+    <tr>
+
+        <td>
+            <label></label>
+        </td>
+        <td>
+            <label>Consignore</label>
+        </td>
+        <td>
+            <label>{{ n.consignore }}</label>
+        </td>
+        <td>
+        </td>
+        <td>
+            <label></label>
+        </td>
+        <td>
+            <label>Consignee</label>
+        </td>
+        <td>
+            <label>{{ n.consignee }}</label>
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <label></label>
+        </td>
+        <td>
+            <label>Booking Address</label>
+        </td>
+        <td>
+            <label>{{ n.billingAddress }}</label>
+        </td>
+        <td>
+
+        </td>
+        <td>
+            <label></label>
+        </td>
+        <td>
+            <label>Delivery Address</label>
+        </td>
+        <td>
+            <label>{{ n.deliveryAddress }}</label>
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+    </tr>
+
+    <tr>
+
+        <td>
+            <label></label>
+        </td>
+        <td>
+            <label>Vehicle Number</label>
+        </td>
+        <td>
+            <label>{{ n.vehicleNumber }}</label>
+        </td>
+        <td>
+            <label>Billing Type</label>
+        </td>
+        <td>
+            <label>{{ n.billingType }}</label>
+        </td>
+        <td>
+            <label>Package Type</label>
+        </td>
+        <td>
+            <label>{{ n.packtype }}</label>
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+    </tr>
+</table>
+
+    <br>
+    <br>
+    <table align="Center" style="width:100%">
+        <tr>
+        <td>Item Detials<br></td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>Doc. Number</td>
+        <td>Date</td>
+        <td>Package Type</td>
+        <td>Value</td>
+        <td>Count</td>
+        <td>Weight</td>
+        <td>Remark</td>
+    </tr>
+    <tr>
+        <td></td> <td>{{ n.docNumber }}</td> <td>{{ n.docDate }}</td> <td>{{ n.packType }}</td> <td>{{ n.value }}</td> <td>{{ n.count }}</td> <td>{{ n.invWeight }}</td><td>{{ n.remark}}</td>
+
+    </tr>
+</table>
+         <br>
+    <button onclick="print()">Print</button><button>Back</button>
+
+         {% endfor %}
+</form>
+</body>
+

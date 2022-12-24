@@ -1,0 +1,39 @@
+{% include "base.html" %}
+<script> </script>
+<body>
+<h3>{{ message }}</h3>
+<center>
+  <form method="post" action="/uploadPod">
+    {% csrf_token %}
+    <h4>LR Number : <input type="text"  name="lrNumber" style="width:10%"> <button type="submit">Load</button></h4></a>
+  </form>
+  <fieldset style="width:95%">
+    <legend><h4>POD Pending</h4></legend>
+        <table>
+            <th>LR Number</th>
+            <th>Date</th>
+            <th>From Location</th>
+            <th>To Loacation</th>
+            <th>Weight</th>
+            <th>Count</th>
+            <th>Status</th>
+            <th>Action</th>
+            <tr>
+                {% for lr in lsdata %}
+                <td>{{ lr.lrNumber }}</td>
+                <td>{{ lr.bookingDate }}</td>
+                <td>{{ lr.bookingBranch }}</td>
+                <td>{{ lr.deliveryBranch }}</td>
+                <td>{{ lr.weight }}</td>
+                <td>{{ lr.noa }}</td>
+                <td>{{ lr.status }}</td>
+                <td><button>Remove</button></td>
+                {% endfor %}
+            </tr>
+
+        </table>
+
+    </fieldset>
+</center>
+</body>
+

@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="#news">Create</a>
+        <a href="#contact">Update</a>
+        <a href="#about">Delete</a>
+        <a hdref="#about">Search</a>
+        <span>
+        <a hdref="#about">Search</a>
+     </div>
+</head>
+<body>
+
+
+<form method="post" action="createUser">
+    {% csrf_token %}
+    <fieldset>
+        {{ message }}
+        <legend><h1>Sign Up</h1></legend>
+        {{ form }}
+        <button>Save</button>
+        </fieldset>
+</form>
+
+<form action="/search" method="post">
+    {% csrf_token %}
+    <input name="firstName">
+    <button>Search</button>
+</form>
+
+<table>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Phone Number</th>
+    <th>Status</th>
+    <th>Edit</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    {% for i in data %}
+    <tr>
+        <td>{{ i.emailID }}</td>
+        <td>{{ i.firstName }}</td>
+        <td>{{ i.lastName }}</td>
+        <td>{{ i.phoneNumber }}</td>
+        <td>{{ i.status }}</td>
+        <td>{{ i.status }}</td>
+        <a href="update/{{ i.emailID }}"><td>Edit</td></a>
+        <a href="update/{{ i.emailID }}"><td>Del</td></a>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>

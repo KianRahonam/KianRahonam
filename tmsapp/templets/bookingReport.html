@@ -1,0 +1,68 @@
+{% include "base.html" %}
+<body>
+<section>
+
+    <h3>Booking Report</h3>
+
+    <div >
+        <table  style="width:100%">
+            <tr>
+                <td>Report As on {{ reportDate }}</td>
+            </tr>
+            </table>
+    <table  style="width:100%; background-color:white">
+
+        <tr style="background-color:coral">
+            <td>LR Number</td>
+            <td>Date</td>
+            <td>From Branch</td>
+            <td>To Branch</td>
+            <td>Del. Type</td>
+            <td>Consignore</td>
+            <td>Consignee</td>
+            <td>From Address</td>
+            <td>Delivery Address</td>
+            <td>Veh. Number</td>
+            <td>Nos</td>
+            <td>Weight</td>
+            <td>Billing Type</td>
+            <td>Doc. Number</td>
+
+            <td>Pack Type</td>
+            <td>Value</td>
+
+
+            <td>Remark</td>
+            <td>Status</td>
+        </tr>
+        {% for n in data %}
+        <tr>
+            <td>{{ n.lrNumber }}</td>
+            <td>{{ n.bookingDate }}</td>
+            <td>{{ n.bookingBranch }}</td>
+            <td>{{ n.deliveryBranch }}</td>
+            <td>{{ n.deliveryType }}</td>
+            <td>{{ n.consignore }}</td>
+            <td>{{ n.consignee }}</td>
+            <td>{{ n.billingAddress }}</td>
+            <td>{{ n.deliveryAddress }}</td>
+            <td>{{ n.vehicleNumber }}</td>
+            <td>{{ n.noa }}</td>
+            <td>{{ n.weight }}</td>
+            <td>{{ n.billingType }}</td>
+            <td>{{ n.docNumber }}{{ n.docDate }}</td>
+            <td>{{ n.packType }}</td>
+            <td>{{ n.value }}</td>
+            <td>{{ n.remark }}</td>
+            <td>{{ n.status }}</td>
+    </tr>
+        {% endfor %}
+</table>
+
+</section>
+<footer>
+<h5>-By Nizcita</h5>
+</footer>
+</body>
+</html>
+

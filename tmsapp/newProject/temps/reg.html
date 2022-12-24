@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+{{ message }}
+    <fieldset>
+        <legend>Login</legend>
+        <form method="post" action="/adduser">
+            {% csrf_token %}
+            <label for="firstname"> First Name :</label>
+            <input name="firstname" type="text">
+            <label for="lastname"> Last Name :</label>
+            <input name="lastname" type="text">
+            <label for="emailid"> E-Mail ID :</label>
+            <input name="emailid" type="email">
+            <label for="phone"> Phone Number :</label>
+            <input name="phone" type="tel">
+            <button type="submit">Submit</button> <button type="reset">Clear</button>
+        </form>
+    </fieldset>
+
+<fieldset>
+    <legend> User Data</legend>
+    <table border style="border-color:blue">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email ID</th>
+            <th>Phone number</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.firstname }}</td>
+            <td>{{ i.lastname }}</td>
+            <td>{{ i.emailId }}</td>
+            <td>{{ i.phoneNum }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</fieldset>
+</body>
+</html>

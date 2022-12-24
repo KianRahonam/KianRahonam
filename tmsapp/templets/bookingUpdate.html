@@ -1,0 +1,212 @@
+<!--{% load static %}-->
+{% include "base.html" %}
+</head>
+<script> </script>
+<body>
+<h3>Update Booking</h3>
+<h3>{{ message }}</h3>
+<form method="post" action="/updareRecord">
+    {% csrf_token %}
+<h5>LR Number : <input type="text" name="lrNumber" style="width:10%"><button type="submit">Search</button></h5>
+</form>
+<form method="post" action="/lrDataUpdate">
+    {% for n in data %}
+         {% csrf_token %}
+         <table align="Center" style="width:100%">
+             Header Detials
+             <tr>
+                 <td>
+                     <a align="Left"><label>LR Number :</label></a>
+                 </td>
+                 <td>
+                     <input align="left" name="lrNumber" value="{{ n.lrNumber }}">
+                 </td>
+                 <td>
+                     <a align="right"><label>Booking Date :</label></a>
+                 </td>
+                 <td>
+                     <a align="right">{{ n.bookingDate }}</a>
+                 </td>
+                 <td>
+                     <a align="right"><label>Status</label></a>
+                 </td>
+                 <td>
+                     <a align="left">{{ n.status }}</a>
+                 </td>
+             </tr>
+             <tr>
+
+                 <td>
+                     <a align="right"><label>Booking Branch</label></a>
+                 </td>
+
+                 <td>
+                     <select name="bookingBranch" id="bookingBranch">
+                         <!-- This is where we set the value to be displayed-->
+                         <option value="{{ n.bookingBranch}}" selected disabled hidden>
+                             {{ n.bookingBranch}}</option>
+                         <option value="Bangalore,KA">Bangalore,KA</option>
+                         <option value="Chennai,TN">Chennai,TN</option>
+                         <option value="Delhi">Delhi</option>
+                         <option value="Mumbai,MH">Mumbai,MH</option>
+                     </select>
+                 </td>
+
+                 <td>
+                     <label>Delivery Branch</label>
+                 </td>
+
+                 <td>
+                     <select name="deliveryBranch"  value="{{ n.deliveryBranch}}">
+                         <!-- This is where we set the value to be displayed-->
+                         <option selected disabled hidden>
+                             {{ n.deliveryBranch}}</option>
+                         <option value="Bangalore,KA">Bangalore,KA</option>
+                         <option value="Chennai,TN">Chennai,TN</option>
+                         <option value="Delhi">Delhi</option>
+                         <option value="Mumbai,MH">Mumbai,MH</option>
+                     </select>
+                 </td>
+
+                 <td>
+                     <label>Delivery Type</label>
+                 </td>
+                 <td>
+                     <select name="{{ n.deliveryType}}" required>
+                         <option  selected disabled hidden>
+                             {{ n.deliveryType}}</option>
+                         <option value="DOOR DELIVERY">DOOR DELIVERY</option>
+                         <option value="HUB DELIVERY">HUB DELIVERY</option>
+                         <option value="SELF PICKUP">SELF PICKUP</option>
+                     </select>
+                 </td>
+                 <td>
+                     <label>Billing Type</label>
+                 </td>
+                 <td>
+                     <select name="billingType" required>
+                         <option selected disabled hidden>
+                             {{ n.billingType}}</option>
+                         <option value="TO-PAY">TO-PAY</option>
+                         <option value="PAID">PAID</option>
+                         <option value="TBB">BILLING</option>
+                         <option value="FOC">FREE SHIPPING</option>
+                     </select>
+                 </td>
+                 <td>
+                     <label>Load Type</label>
+                 </td>
+                 <td>
+                     <select name="loadType" required>
+                         <option value="none" selected disabled hidden>
+                             {{ n.loadType}}</option>
+                         <option value="FTL">FTL </option>
+                         <option value="LTL">LTL</option>
+                     </select>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <label>Consignore</label>
+                 </td>
+
+                 <td>
+                     <input type="text" name="consignore" required value="{{ n.consignore }}">
+                 </td>
+
+                 <td>
+                     <label>Consignee</label>
+                 </td>
+                 <td>
+                     <input type="text" name="consignee" required value="{{ n.consignee }}">
+                 </td>
+
+             <tr>
+                 <td>
+                     <label>GST Number</label>
+                 </td>
+                 <td><input type="text" name="fgstn" required placeholder="GSTN" value="{{ n.fgstn }}">
+                 <td>
+                     <label>GST Number</label>
+                 </td>
+                 <td><input type="text" name="tgstn" required placeholder="GSTN" value="{{ n.ngstn }}">
+             </tr>
+
+             <tr>
+                 <td>
+                     <label>Booking Address</label>
+                 </td>
+                 <td>
+                     <textarea type="text" name="billingAddress" >{{ n.billingAddress }}</textarea>
+                 </td>
+                 <td>
+                     <label>Delivery Address</label>
+                 </td>
+                 <td>
+                     <textarea type="text" name="deliveryAddress" >{{ n.deliveryAddress }}</textarea>
+                 </td>
+             </tr>
+             <tr>
+
+                 <td>
+                     <label>Vehicle Number</label>
+                 </td>
+                 <td>
+                     <input name="vehicleNumber" type="text" value="{{ n.vehicleNumber }}">
+                 </td>
+                 <td>
+                     <label>Freight Amount</label>
+                 </td>
+                 <td>
+                     <input name="freightAmount" placeholder="Freight Amount" value="{{ n.freightAmount }}" >
+                 </td>
+                 <td>
+                     <label>Hamali Charge</label>
+                 </td>
+                 <td>
+                     <input name="hamaliCharges" placeholder="Hamali Charges" value="{{ n.hamaliCharges }}" >
+                 </td>
+                 <td>
+                     <label>NOA</label>
+                 </td>
+                 <td><input name="noa" value="{{ n.noa}}" ></td>
+                 <td>
+                     <label>Weight</label>
+                 </td>
+                 <td><input name="weight" placeholder="Total Weight" value="{{ n.weight }}"></td>
+             </tr>
+
+         </table>
+
+         <div >
+             <table  style="width:100%">
+                 Item Detials
+                 <tr>
+                     <td>Doc. Number</td>
+                     <td>Date</td>
+                     <td>Package Type</td>
+                     <td>Value</td>
+                     <td>Count</td>
+                     <td>Weight</td>
+                     <td>Remark</td>
+                 </tr>
+                 <tr>
+                     <td><input type="text" name="docNumber" value="{{ n.docNumber }}"></td>
+                     <td><input type="text" name="docDate" value="{{ n.docDate }}"></td>
+                     <td><input type="text" name="packType" value="{{ n.packType}}"></td>
+                     <td><input type="text" name="value" value="{{ n.value }}"></td>
+                     <td><input type="text"name="noa" value="{{ n.noa }}"></td>
+                     <td><input type="text" name="invWeight" value="{{ n.invWeight }}"></td>
+                     <td><input type="text" name="remark" value="{{ n.remark }}"></td>
+
+                 </tr>
+             </table>
+         </div>
+         <br>
+         <button type="submit" onclick="/lrDataUpdate/{{n.lrNumber}}">Update</button><button>Cancel</button>
+         <br>
+    {% endfor %}
+     </form>
+
+
+</body>

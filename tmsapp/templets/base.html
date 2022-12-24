@@ -1,0 +1,67 @@
+{% load static %}
+<html>
+<html>
+<link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+<body>
+
+<div class="logopart">
+  <h2>TMS</h2>
+</div>
+<section>
+  <ul>
+    <div class="dropdown">
+      <li class="dropbtn">My Account
+        <i class="fa fa-caret-down"></i>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="#">Mail</a>
+          <a href="/logoutUser">Logout</a>
+        </div>
+      </li>
+    </div>
+    <li><a href="/userManagement">User Management</a></li>
+    <li><a href="/uploadPod">UploadFile</a></li>
+    <div class="dropdown">
+      <li class="dropbtn">Reports
+        <i class="fa fa-caret-down"></i>
+        <div class="dropdown-content">
+          <a href="/bookingReport">Booking Report</a>
+          <a href="/updateBooking">Loading Report</a>
+          <a href="/viewBooking">Delivery Report</a>
+        </div>
+      </li>
+    </div>
+    <li><a href="/newBranch">Branch Offices</a></li>
+    <li><a href="/delivery">Delivery</a></li>
+    <li><a href="/unloading">Unloading</a></li>
+
+    <div class="dropdown">
+      <li class="dropbtn">Loading
+        <i class="fa fa-caret-down"></i>
+        <div class="dropdown-content">
+          <a href="/lorryhirePage">Lorry Hire</a>
+          <a href="/loadingPage">Load Consignment</a>
+          <a href="/viewLh">Print LH</a>
+        </div>
+      </li>
+    </div>
+    <div class="dropdown">
+      <li class="dropbtn">Booking
+        <i class="fa fa-caret-down"></i>
+        <div class="dropdown-content">
+          <a href="/bookingPage">New Booking</a>
+          <a href="/updateBooking">Update Booking</a>
+          <a href="/viewBooking">Track Doc</a>
+        </div>
+      </li>
+    </div>
+    <div>
+      <li><a href="/mainPage">Main View</a></li>
+    </div>
+  </ul>
+</section>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

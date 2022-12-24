@@ -1,0 +1,45 @@
+{% include "base.html" %}
+<script> </script>
+<body>
+<h3>{{ message }}</h3>
+<center>
+<fieldset style="width:95%">
+    <legend><h4>Trip</h4></legend>
+    <table align="Center" style="width:100%;background-color:linen">
+        <tr>
+            <td><label>Select Vehicle :
+            </label></td>
+            <td><select name="vehicleNumber">{% for n in data %}<option>{{ n.vehiclenumber }}</option>{% endfor %}</select></td>
+            <td>
+                <a align="right"><label>Loading Branch :</label></a>
+            </td>
+            <td>
+                <select>
+                    {% for n in branch %}
+                    <option>{{ n.branchName }}</option>
+                    {% endfor %}
+                </select>
+        </td>            <td>
+            <a align="right"><label>Delivery Branch :</label></a>
+        </td>
+            <td>
+                <select>
+                    {% for n in branch %}
+                    <option>{{ n.branchName }}</option>
+                    {% endfor %}
+                </select><td>
+            <a align="right"><label>Dispatch Date :</label> </a>
+        </td>            <td>
+            <input type="date">
+        </td>
+    </table>
+
+</fieldset>
+    <h4>LR Number : <input type="text" id="lrNumber" name="lrNumber" style="width:10%"> <button type="submit">Load</button></h4></a>
+    <fieldset style="width:95%">
+        <legend><h4>Consignments</h4></legend>
+
+    </fieldset>
+</center>
+</body>
+

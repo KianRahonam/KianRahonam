@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <div class="topnav">
+         <a class="active" href="/admin">Admin</a>
+         <a href="/newTicket">New Ticket</a>
+         <a href="/update">Update Ticket</a>
+         <a href="/close">Close Ticket</a>
+         <a href="/ticketsall">Ticket List</a>
+    </div>
+</head>
+<body>
+<p>Welcome to our Customer Support Website !!!</p>
+<form method="put" action="createTicket">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Create</button>     <button>Exit</button>
+</form>
+
+
+</body>
+</html>

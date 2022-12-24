@@ -1,0 +1,188 @@
+{% load static %}
+{% include "base.html" %}
+{% block content %}
+<body xmlns="http://www.w3.org/1999/html">
+
+<h3>New Booking</h3>
+<center>
+    <fieldset>
+    <legend>Header Detials</legend>
+    <form method="post" action="/createBooking">
+        {% csrf_token %}
+
+        <table align="Center" style="width:100%;background-color:Coral">
+
+            <tr>
+                <td>
+                    <a align="right"><label>Booking Date</label></a>
+                </td>
+                <td>
+                    <input name="bookingDate" type="date" required>
+                </td>
+                <td><label>Mode of Transport :</label></td>
+                <td>
+                    <select name="mot" required>
+                        <option value="Road">Road</option>
+                        <option value="Express">Express</option>
+                        <option value="Train">Train</option>
+                        <option value="Air">Air</option>
+                    </select>
+            </tr>
+            <tr>
+
+                <td>
+                    <a align="right"><label>Booking Branch</label></a>
+                </td>
+
+                <td>
+                    <select name="bookingBranch" required>
+                        {% for b in branch %}
+                        <option value="{{ b.branchName }}">{{ b.branchName }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+
+                <td>
+                    <label>Delivery Branch</label>
+                </td>
+
+                <td>
+                    <select name="deliveryBranch" required>
+                        {% for b in branch %}
+                        <option value="{{ b.branchName }}">{{ b.branchName }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+
+                <td>
+                    <label>Delivery Type</label>
+                </td>
+                <td>
+                    <select name="deliveryType" required>
+                        <option value="DOOR DELIVERY">DOOR DELIVERY</option>
+                        <option value="HUB DELIVERY">HUB DELIVERY</option>
+                        <option value="SELF PICKUP">SELF PICKUP</option>
+                    </select>
+                </td>
+                <td>
+                    <label>Billing Type</label>
+                </td>
+                <td>
+                    <select name="billingType" required>
+                        <option value="TO-PAY">TO-PAY</option>
+                        <option value="PAID">PAID</option>
+                        <option value="TBB">BILLING</option>
+                        <option value="FOC">FREE SHIPPING</option>
+                    </select>
+                </td>
+                <td>
+                    <label>Load Type</label>
+                </td>
+                <td>
+                    <select name="loadType" required>
+                        <option value="FTL">FTL </option>
+                        <option value="LTL">LTL</option>
+                        <option value="ODC">ODC</option>
+                        <option value="Open Truck">Open Truck</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Consignore</label>
+                </td>
+
+                <td>
+                    <input type="text" name="consignore" required>
+                </td>
+
+                <td>
+                    <label>Consignee</label>
+                </td>
+                <td>
+                    <input type="text" name="consignee" required>
+                </td>
+
+            <tr>
+                <td>
+                    <label>GST Number</label>
+                </td>
+                <td><input type="text" name="fgstn" required placeholder="GSTN">
+                <td>
+                    <label>GST Number</label>
+                </td>
+                <td><input type="text" name="fgstn" required placeholder="GSTN">
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Booking Address</label>
+                </td>
+                <td>
+                    <textarea type="text" name="billingAddress" required></textarea>
+                </td>
+                <td>
+                    <label>Delivery Address</label>
+                </td>
+                <td>
+                    <textarea type="text" name="deliveryAddress" required></textarea>
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <label>Vehicle Number</label>
+                </td>
+                <td>
+                    <input name="vehicleNumber" type="text" required>
+                </td>
+                <td>
+                    <label>Freight Amount</label>
+                </td>
+                <td>
+                    <input name="freight" placeholder="Freight Amount" >
+                </td>
+                <td>
+                    <label>Hamali Charge</label>
+                </td>
+                <td>
+                    <input name="hamali" placeholder="Hamali Charges" >
+                </td>
+                <td>
+                    <label>NOA</label>
+                </td>
+                <td><input name="noa" ></td>
+                <td>
+                    <label>Weight</label>
+                </td>
+                <td><input name="weight" placeholder="Total Weight"></td>
+            </tr>
+        </table>
+        </fieldset>
+        <fieldset>
+        <legend>Item Detials</legend>
+    <div >
+        <table  style="width:100%;background-color:Coral">
+            <tr>
+                <td>Doc. Number</td>
+                <td>Date</td>
+                <td>Package Type</td>
+                <td>Value</td>
+                <td>Count</td>
+                <td>Weight</td>
+                <td>Remark</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="docNumber" required></td><td><input type="date" name="docDate"></td><td><input
+                    type="text" name="packType"></td> <td><input type="text" name="value"></td><td><input type="text" name="noa" required></td><td><input type="text" name="invWeight" required></td><td><input type="text" name="remark"></td>
+            </tr>
+        </table>
+        <br>
+        <button onclick="/createBooking">Save</button><button>Clear</button>
+    </div>
+</form>
+    </fieldset>
+</center>
+
+</body>
+{% endblock %}

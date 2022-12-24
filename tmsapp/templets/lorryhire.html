@@ -1,0 +1,120 @@
+<!--{% load static %}-->
+{% include "base.html" %}
+<head></head>
+<script> </script>
+<body>
+
+<h3>{{ message }}</h3>
+<center><fieldset style="width:90%;">
+    <legend><h5>Lorry Hire Detials</h5></legend>
+    <form method="post" action="/lorryHire">
+        {% csrf_token %}
+        <table align="Center" style="width:100%;background-color:Coral">
+            <tr>
+                <td>
+                    <a align="right"><label>Vehicle Number :</label></a>
+                </td>
+                <td>
+                    <input type="text" name="vehiclenumber" required>
+                </td>
+                <td>
+                    <label>Driver Name :</label>
+                </td>
+                <td>
+                    <input type="text" name="driverName" required>
+                </td>
+
+                <td>
+                    <label>Driver Number :</label>
+                </td>
+                <td>
+                    <input type="text" name="driverNumber" required>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Vehicle Type :</label>
+                </td>
+                <td>
+                    <select name="vehicleType" required>
+                        <option value="TATA-ACE">TATA-ACE</option>
+                        <option value="T1">Type-1</option>
+                        <option value="T2">Type-2</option>
+                        <option value="T3">Type-3</option>
+                    </select>
+                </td>
+                <td>
+                    <a align="right"><label>Capacity :</label></a>
+                </td>
+                <td>
+                    <input type="text" name="capacityWeight" required>
+                </td>
+
+                <td>
+                    <a align="right"><label>Vendor Name :</label></a>
+                </td>
+                <td>
+                    <input type="text" name="vendorName" required>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>Hire Amount :</label>
+                </td>
+                <td>
+                    <input type="text" name="hireAmount" required>
+                </td>
+
+            </tr>
+
+        </table>
+        <button type="submit">Confirm</button> <button type="reset">Back</button>
+    </form>
+</fieldset>
+
+<fieldset style="width:90%">
+    <legend><h5>Lorry Hired</h5><a href="/clearall"><button>Cancell All</button></a></legend>
+
+        <table style="background-color:white">
+            <tr>
+                <th style="background-color:coral">Trip #</th>
+                <th style="background-color:coral">Vehicle Number</th>
+                <th style="background-color:coral">Vehicle Type</th>
+                <th style="background-color:coral">Capacity</th>
+                <th style="background-color:coral">Load Weight</th>
+                <th style="background-color:coral">Driver Name</th>
+                <th style="background-color:coral">Driver Number</th>
+                <th style="background-color:coral">Hire Amount</th>
+                <th style="background-color:coral">Vendor Name</th>
+                <th style="background-color:coral">Status</th>
+                <th style="background-color:coral">Action</th>
+
+            </tr>
+        {% csrf_token %}
+            <tr>
+                    {% for n in data %}
+                    <td>{{ n.tripNumber }}</td>
+                    <td>{{ n.vehiclenumber }}</td>
+                    <td>{{ n.vehicletype }}</td>
+                    <td>{{ n.capacityWeight }}</td>
+                    <td>{{ n.loadWeight }}</td>
+                    <td>{{ n.driverName }}</td>
+                    <td>{{ n.driverNumber }}</td>
+                    <td>{{ n.hireAmount }}</td>
+                    <td>{{ n.vendorName }}</td>
+                    <td>{{ n.status }}</td>
+                    <td><a href="approve/{{ n.id }}"><button style="background-color:Green; color:White">Approve</button>
+                        </a> <a href="reject/{{ n.id }}"><button style="background-color:red; color:White" >Reject</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+</fieldset>
+</center>
+
+</body>
+

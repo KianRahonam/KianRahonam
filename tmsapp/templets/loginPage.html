@@ -1,0 +1,58 @@
+{% load static %}
+{{ basePage }}
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+<body>
+<div class="logopart">
+    <h2>TMS</h2>
+</div>
+<section>
+    <ul>
+        <div class="dropdown">
+            <li class="dropbtn">Login</li>
+        </div>
+        <div class="dropdown">
+            <li class="dropbtn">Sign Up</li>
+        </div>
+        <div class="dropdown">
+            <li class="dropbtn">Support</li>
+        </div>
+    </ul>
+</section>
+<nav>
+    <fieldset>
+        {{ message }}
+        <legend><h4>Login</h4></legend>
+    <form method="post" action="/loginUser">
+        {% csrf_token %}
+        <br>
+        <input align="Right" name="username" type="text" placeholder="User Name"><br>
+        <br><input align="right" name="password" type="password" placeholder="Password"><br>
+        <br><button type="submit">Login</button><br>
+    </form>
+        </fieldset>
+<br>
+    <fieldset>
+        <legend>        <h4>Track Consignment</h4></legend>
+    <form method="post" action="/track">
+        {% csrf_token %}
+        <input name="lrNumber"><br>
+        <br><button type="submit">Track</button><br>
+    </form>
+        </fieldset>
+</nav>
+<article>
+    <fieldset>
+<h2>Welcome to gTMS</h2>
+    <p>Hi Client,<br>
+<br>
+        Thanks for Choosing our new version of TMS we have optimized end to end transport management process based on our ground experience. We would like here feedback of our system introduced.
+        For more customized process contact us info@nizcITa.com or call us on 813-999-9988 <br><p>Regards | Manohar Naik</p>
+</p>
+        </fieldset>
+</article>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+{% load static %}
+{% include "base.html" %}
+{% block content %}
+<body xmlns="http://www.w3.org/1999/html">
+<h3>Create Branch</h3>
+<div style="float:left" weidth="100%">
+    <form method="post" action="/createBranch">
+        {% csrf_token %}
+
+        <table align="left" style="width:100%">
+            <tr>
+                <td>
+                    <label for="branchName" >Branch Name :</label></td>
+                <td>
+                    <input weidth="100%" type="text" name="branchName" id="branchName" required ></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="branchAddress" >Branch Address :</label></td>
+                <td>
+                    <textarea weidth="50%" type="text" name="branchAddress" id="branchAddress" required ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="branchCity" >City :</label></td>
+                <td>
+                    <input weidth="50%" type="text" name="branchCity" id="branchCity" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="branchState" >State :</label></td>
+                <td>
+                    <input weidth="50%" type="text" id="branchState" name="branchState" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="contactNumber" >Contact Number :</label></td>
+                <td>
+                    <input weidth="50%" type="tel" id="contactNumber" name="contactNumber" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="emialId" >E-Mail ID :</label></td>
+                <td>
+                    <input weidth="50%" type="email" id="emialId" name="emailId" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="ownerShip" >Ownership :</label></td>
+                <td>
+                    <select id="ownerShip" name="ownerShip">
+                        <option value="Own">Own</option>
+                        <option value="Partner">Partner</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="status">Status :</label></td>
+                <td>
+                    <select id="status" name="status">
+                        <option value="Active">Active</option>
+                        <option value="In-Active">In-Active</option>
+                        <option value="Hold">Hold</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <center><button type="submit">Save</button>
+        <button type="submit">Clear</button></center>
+
+    </form>
+
+
+    </div>
+
+    <div style="float:left; padding-left:40px"  weidth="100%">
+        <table>
+            <tr style="background-color:coral">
+                <td><center> Branch ID</center></td>
+                <td><center>Name</center></td>
+                <td><center>Address</center></td>
+                <td><center>City</center></td>
+                <td><center>State</center></td>
+                <td><center>Ph. Number</center></td>
+                <td><Center>Status</Center></td>
+                <td><Center>LR Serial</Center></td>
+            </tr>
+            {% for n in data %}
+            <tr>
+                <td>{{ n.id}}</td>
+                <td>{{ n.branchName }}</td>
+                <td>{{ n.branchAddress }}</td>
+                <td>{{ n.branchCity }}</td>
+                <td>{{ n.branchState}}</td>
+                <td>{{ n.contactNumber }}</td>
+                <td>{{ n.status }}</td>
+                <td>{{ n.lrnumberSl }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+</div>
+<br>
+<br>
+<br>
+{% endblock %}
+</body>
