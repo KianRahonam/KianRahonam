@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <h1>Welcome to My Class</h1>
+    <button>Add</button><button>Update</button><button>Delete</button><button>View</button>
+</head>
+<br>
+<body>
+<h1>{{ message }}</h1>
+<fieldset>
+<form method="post" action="/add">
+    {% csrf_token %}
+   <input placeholder="First Name" name="firstName">
+    <input placeholder="Last Name" name="lastName">
+    <input placeholder="Email ID" name="emailId">
+    <select name="gender" id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <input placeholder="age" name="age">
+    <select name="role" id="role">
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+</select>
+    <button type="submit">Submit</button><button>back</button>
+</form>
+</fieldset>
+
+</body>
+<br>
+</html>
