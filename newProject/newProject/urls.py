@@ -1,4 +1,4 @@
-"""mwn URL Configuration
+"""newProject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -21,8 +21,5 @@ link = views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', link.mainpage, name='mainpage'),
-    path('add', link.adddata, name='adduser'),
-    path("getdata",link.getdata, name='getdata')
+    path('',link.mainPage, name="mainpage")
 ]
-

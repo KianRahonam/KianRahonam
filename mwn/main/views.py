@@ -18,3 +18,7 @@ def adddata(req):
         return render(req, 'index.html', {'message': 'Data Added'})
     else:
         return render(req, 'index.html', {'message': 'Data not Added'})
+
+def getdata(req):
+    data = UserManagement.objects.all()
+    return render(req,'viewdata.html',{'data':data})
