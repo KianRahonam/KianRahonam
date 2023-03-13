@@ -1,0 +1,74 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+	<title>My Awesome Login Page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+</head>
+<!--Coded with love by Mutiullah Samim-->
+<body>
+	<div class="container h-100">
+
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+
+						<img src="data:image/jpeg;base64,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" class="brand_logo" alt="Logo">
+						<div style="padding:7px">
+						<h5>Signup Page</h5>
+							</div>
+					</div>
+				</div>
+
+				<div class="d-flex justify-content-center form_container">
+
+<form method="post" action="/adduser">
+<div class="input-group mb-3">
+<div class="input-group-append">
+<span class="input-group-text"><i class="fas fa-user"></i></span>
+</div>
+<input type="text" name="username" class="form-control input_user" value="" placeholder="Username">
+</div>
+<div class="input-group mb-2">
+<div class="input-group-append">
+<span class="input-group-text"><i class="fas fa-key"></i></span>
+</div>
+<input type="password" name="password" class="form-control input_pass" value="" placeholder="password">
+</div>
+<div class="form-group">
+<div class="custom-control custom-checkbox">
+<input type="checkbox" class="custom-control-input" id="customControlInline">
+<label class="custom-control-label" for="customControlInline">Remember me</label>
+</div>
+</div>
+<div class="d-flex justify-content-center mt-3 login_container">
+<button type="button" name="button" class="btn login_btn">Register</button>
+</div>
+</form>
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+					</div>
+					<div class="d-flex justify-content-center links">
+						<a href="#">Forgot your password?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

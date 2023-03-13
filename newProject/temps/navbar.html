@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="{{ home }}"><a href="/">Home</a></li>
+      <li class="{{ add }}"><a href="/addPage">Add</a></li>
+      <li class="{{ update }}"><a href="/updatePage">Update</a></li>
+      <li class="{{ delete }}"><a href="/deletePage">Delete</a></li>
+      <li class="{{ view }}"><a href="/viewPage">View</a></li>
+      <li><a href="/admin">Admin</a></li>
+    </ul>
+  </div>
+
+</nav>
+
+</head>
+<body>
+
+<div class="container">
+  <h3>{{ site }}</h3>
+  <p>Here you can Add User to the DB</p>
+</div>
+{% if site == "view" %}
+  <div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+      {% for d in data %}
+        <tr>
+          <td>{{ d.id }}</td>
+          <td>{{ d.firstname }}</td>
+          <td>{{ d.lastname }}</td>
+          <td>{{ d.gender }}</td>
+          <td>{{ d.email }}</td>
+          <td>{{ d.phone }}</td>
+          <td>{{ d.role }}</td>
+          <td>{{ d.status }}</td>
+          <td><button> Edit </button> <button> Delete </button></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% elif site == "createuser" %}
+<div class="container">
+  <h1>{{ msg }}</h1>
+  <form method="post" class="form-horizontal" style="width:40%;" action="/createUser">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="un">UserName:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" required id="un" name="un">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pw">Password:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="pw" name="pw">
+      </div>
+    </div>
+
+  <div class="form-group">
+      <label class="control-label col-sm-2" for="fn">FirstName:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="fn" name="fn">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="ln">LastName:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ln" name="ln">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="gn">Gender:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="gn" name="gn">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="em">E-mail:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="em" name="em">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="ph">Phone:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ph" name="ph">
+      </div>
+    </div>
+
+ <div class="form-group">
+      <label class="control-label col-sm-2" for="rl">Role:</label>
+      <div class="col-sm-10">
+        <select name="rl" id="rl">
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Guest">Guest</option>
+      </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button> <button type="submit" class="btn btn-default">Back</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% elif site == "updatepage" %}
+<div class="container">
+  <form method="post" class="form-horizontal" style="width:40%;" action="/fatchUser">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="un">UserName:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" required id="un" name="un">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  {% if data.id != "" %}
+  <h1>{{ msg }}</h1>
+  <form method="post" class="form-horizontal" style="width:40%;" action="/updateUser">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="un">UserName:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" required id="un" name="un" value="{{ data.id }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="ps">Password:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ps" name="ps" value="kkk">
+      </div>
+    </div>
+
+  <div class="form-group">
+      <label class="control-label col-sm-2" for="fn">FirstName:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="fn" name="fn" value="{{ data.firstname }}">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="ln">LastName:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ln" name="ln" value="{{ data.lastname }}">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="gn">Gender:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="gn" name="gn" value="{{ data.gender }}">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="em">E-mail:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="em" name="em" value="{{ data.email }}">
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="ph">Phone:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ph" name="ph" value="{{ data.phone }}">
+      </div>
+    </div>
+
+ <div class="form-group">
+      <label class="control-label col-sm-2" for="rl">Role:</label>
+      <div class="col-sm-10">
+        <select name="rl" id="rl">
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Guest">Guest</option>
+      </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <a href="updatePage/{{ un.id }}"></a><button type="submit" class="btn btn-default">Update</button> <a href="/"><button type="submit" class="btn btn-default">Cancel</button></a>
+      </div>
+    </div>
+  </form>
+</div>
+{% endif %}
+
+{% elif site == "deletepage" %}
+
+{% endif %}
+
+</body>
+</html>
