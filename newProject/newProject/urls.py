@@ -1,4 +1,4 @@
-"""newProject URL Configuration
+"""newproject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -17,9 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from main import views
 
-link = views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',link.mainPage, name="mainpage")
+    path('', views.index, name='main'),
+    path('addPage', views.addpage, name='addpage'),
+    path('updatePage',views.updatePage, name='updateage'),
+    path('deletePage', views.deletePage, name='deletepage'),
+    path('viewPage', views.viewPage, name='viewpage'),
+    path('createUser', views.createUser, name='createUser'),
+    path('fatchUser', views.fatchUser, name='fatchUser'),
+    path('updateUser',views.updateUser, name='updatePage')
 ]
