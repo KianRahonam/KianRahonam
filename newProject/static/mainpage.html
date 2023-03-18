@@ -20,10 +20,10 @@
       <li class="{{ update }}"><a href="/updatePage">Update</a></li>
       <li class="{{ delete }}"><a href="/deletePage">Delete</a></li>
       <li class="{{ view }}"><a href="/viewPage">View</a></li>
+        <li><a href="/loginpage">Login</a></li>
       <li><a href="/admin">Admin</a></li>
     </ul>
   </div>
-
 </nav>
 
 </head>
@@ -33,6 +33,7 @@
   <h3>{{ site }}</h3>
   <p>Here you can Add User to the DB</p>
 </div>
+
 {% if site == "view" %}
   <div class="container">
     <h2>Striped Rows</h2>
@@ -228,6 +229,25 @@
   </form>
 </div>
 {% endif %}
+
+{% elif site == "login" %}
+
+<div class="container">
+  <form method="post" class="form-horizontal" style="width:40%;" action="/fatchUser">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="un">UserName:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" required id="un" name="un">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+
 
 {% elif site == "deletepage" %}
 

@@ -2,21 +2,21 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(req):
-    return render(req,'navbar.html',{'site':'home',"home":'active'})
+    return render(req,'mainpage.html',{'site':'home',"home":'active'})
 
 def addpage(req):
-    return render(req,'navbar.html',{'site':'createuser',"add":'active'})
+    return render(req,'mainpage.html',{'site':'createuser',"add":'active'})
 
 def updatePage(req):
-    return render(req,'navbar.html',{"site":'updatepage',"update":'active',"un":""})
+    return render(req,'mainpage.html',{"site":'updatepage',"update":'active',"un":""})
 
 def deletePage(req):
-    return render(req,'navbar.html',{'site':'deletepage',"delete":'active'})
+    return render(req,'mainpage.html',{'site':'deletepage',"delete":'active'})
 
 def viewPage(req):
     from .models import UserManagement
     data = UserManagement.objects.all()
-    return render(req,'navbar.html',{"site":'view',"view":'active','data':data})
+    return render(req,'mainpage.html',{"site":'view',"view":'active','data':data})
 
 def createUser(req):
     from .models import UserManagement
@@ -41,7 +41,7 @@ def createUser(req):
                             status=status
                             )
         um.save()
-        return render(req, 'navbar.html', {"site": 'createuser',
+        return render(req, 'mainpage.html', {"site": 'createuser',
                                            "view": 'active',
                                            'msg':'{} User Create !'.format(username)})
 
@@ -51,7 +51,7 @@ def fatchUser(req):
         id = req.POST['un']
         um = UserManagement.objects.get(id=id)
         print(um.firstname)
-        return render(req, 'navbar.html', {"site": 'updatepage', "update": 'active','data':um})
+        return render(req, 'mainpage.html', {"site": 'updatepage', "update": 'active','data':um})
 #
 def updateUser(req):
     from .models import UserManagement
@@ -69,5 +69,9 @@ def updateUser(req):
         um = UserManagement(id=username,ps=password,firstname=firstname,lastname=lastname,email=email,phone=phone,gender=gender,role=role,status=status)
         um.save()
 
-    return render(req, 'navbar.html', {"site": 'updatepage', "update": 'active'})
+    return render(req, 'mainpage.html', {"site": 'updatepage', "update": 'active'})
+
+def loginview(req):
+    return render(req, 'mainpage.html', {"site": 'login', "login": 'active'})
+
 

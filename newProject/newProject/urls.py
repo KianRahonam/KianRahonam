@@ -26,5 +26,6 @@ urlpatterns = [
     path('viewPage', views.viewPage, name='viewpage'),
     path('createUser', views.createUser, name='createUser'),
     path('fatchUser', views.fatchUser, name='fatchUser'),
-    path('updateUser',views.updateUser, name='updatePage')
+    path('updateUser',views.updateUser, name='updatePage'),
+    path('loginview',views.loginview, name='loginpage'),
 ]
