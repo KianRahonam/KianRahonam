@@ -19,7 +19,7 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='main'),
+    path('a', views.index, name='main'),
     path('addPage', views.addpage, name='addpage'),
     path('updatePage',views.updatePage, name='updateage'),
     path('deletePage', views.deletePage, name='deletepage'),
@@ -28,4 +28,5 @@ urlpatterns = [
     path('fatchUser', views.fatchUser, name='fatchUser'),
     path('updateUser',views.updateUser, name='updatePage'),
     path('loginview',views.loginview, name='loginpage'),
+    path('',views.deldata, name='deletedata'),
 ]

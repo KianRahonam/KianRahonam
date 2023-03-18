@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def index(req):
@@ -43,7 +43,7 @@ def createUser(req):
         um.save()
         return render(req, 'mainpage.html', {"site": 'createuser',
                                            "view": 'active',
-                                           'msg':'{} User Create !'.format(username)})
+                                           'msg':'{} User Created !'.format(username)})
 
 def fatchUser(req):
     from .models import UserManagement
@@ -73,5 +73,13 @@ def updateUser(req):
 
 def loginview(req):
     return render(req, 'mainpage.html', {"site": 'login', "login": 'active'})
+
+def deldata(req):
+    from .models import UserManagement
+    un = UserManagement.objects.get(id='manohar.naik@gmail.com')
+    un.delete()
+
+    return HttpResponse('Deleted')
+
 
 
